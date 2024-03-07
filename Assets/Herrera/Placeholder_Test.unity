@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 637422820}
   m_Layer: 0
   m_Name: a02_Cube_00
-  m_TagString: Untagged
+  m_TagString: InteractiveObj
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

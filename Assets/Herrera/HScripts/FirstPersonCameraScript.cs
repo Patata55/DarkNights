@@ -45,5 +45,21 @@ public class FirstPersonCameraScript : MonoBehaviour
         }
 
         transform.localPosition = new Vector3(0f, bobbingOffset, 0f);
+
+        // Check if the player is pressing a specific button (e.g., E key)
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            // Raycast to detect interactable objects
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
+            {
+                // Check if the hit object has the specified tag
+                if (hit.transform.CompareTag("InteractiveObj"))
+                {
+                    // Output the name of the interactable object
+                    Debug.Log("Looking at interactable object: " + hit.transform.name);
+                }
+            }
+        }
     }
 }
