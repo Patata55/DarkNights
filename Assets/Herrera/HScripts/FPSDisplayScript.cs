@@ -1,23 +1,21 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FPSDisplay : MonoBehaviour
 {
-    GUIStyle style = new GUIStyle();
-    Rect fpsRect;
+    public Text fpsText;
+    private float deltaTime = 0.0f;
 
-    void Start()
+    void Update()
     {
-        // Set the style for displaying FPS
-        style.fontSize = 24;
-        style.normal.textColor = Color.white;
+        // Calculate the FPS
+        deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
+        float fps = 1.0f / deltaTime;
 
-        // Set the position for displaying FPS (top left corner)
-        fpsRect = new Rect(10, 10, 200, 50);
-    }
-
-    void OnGUI()
-    {
-        // Display the FPS cap in real-time
-        GUI.Label(fpsRect, "FPS Cap: " + Application.targetFrameRate.ToString(), style);
+        // Update the FPS text
+        if (fpsText != null)
+        {
+            fpsText.text = "FPS: " + Mathf.Round(fps);
+        }
     }
 }
